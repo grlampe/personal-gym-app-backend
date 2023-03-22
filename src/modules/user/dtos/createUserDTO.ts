@@ -15,6 +15,5 @@ export class CreateUserDTO {
   document: string;
 
   @IsNotEmpty()
-  @IsDate()
   birthDate: Date;
 }

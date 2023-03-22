@@ -12,4 +12,28 @@ export class PrismaUserRepository implements UserRepository {
       data: user,
     });
   }
+
+  async findByEmail(email: string): Promise<User> {
+    return this.prismaService.user.findFirst({
+      where: { email },
+    });
+  }
+
+  async findByDocument(document: string): Promise<User> {
+    return this.prismaService.user.findFirst({
+      where: { document },
+    });
+  }
+  async findById(id: string): Promise<User> {
+    return this.prismaService.user.findFirst({
+      where: { id },
+    });
+  }
+
+  async updatePassword(id: string, updatedUser: User): Promise<void> {
+    await this.prismaService.user.update({
+      where: { id },
+      data: updatedUser,
+    });
+  }
 }
