@@ -1,12 +1,5 @@
-import {
-  Body,
-  Controller,
-  Headers,
-  Post,
-  Put,
-  Req,
-  UseGuards,
-} from '@nestjs/common';
+import { Body, Controller, Post, Put, Req, UseGuards } from '@nestjs/common';
+import { User } from '@prisma/client';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guards';
 import { CreateUserDTO } from './dtos/createUserDTO';
 import { CreateUserService } from './services/createUser.service';
@@ -20,7 +13,7 @@ export class UserController {
   ) {}
 
   @Post()
-  async create(@Body() body: CreateUserDTO) {
+  async create(@Body() body: CreateUserDTO): Promise<User> {
     const { name, email, password, document, birthDate } = body;
 
     return await this.createUserService.execute({
@@ -34,7 +27,7 @@ export class UserController {
 
   @UseGuards(JwtAuthGuard)
   @Put('changePassword')
-  async updatePassword(@Body() body, @Req() req) {
+  async updatePassword(@Body() body, @Req() req): Promise<void> {
     const { password } = body;
     const { userID } = req.user;
     return await this.updatePasswordService.execute(userID, password);
