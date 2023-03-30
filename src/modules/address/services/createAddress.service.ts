@@ -1,14 +1,17 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { Address } from '@prisma/client';
 import { randomUUID } from 'crypto';
-import { CreateAddressDTO } from '../dtos/createAddressDTO';
+import { CreateOrUpdateAddressDTO } from '../dtos/createorUpdateAddressDTO';
 import { AddressRepository } from '../repositories/address.repository';
 
 @Injectable()
 export class CreateAddressService {
   constructor(private readonly addressRepository: AddressRepository) {}
 
-  async execute(userID: string, request: CreateAddressDTO): Promise<Address> {
+  async execute(
+    userID: string,
+    request: CreateOrUpdateAddressDTO,
+  ): Promise<Address> {
     const { street, number, zipCode, complement, state, country, city } =
       request;
 
@@ -29,6 +32,7 @@ export class CreateAddressService {
       country,
       city,
       createdAt: new Date(),
+      updatedAt: new Date(),
     });
 
     return address;

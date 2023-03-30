@@ -33,6 +33,7 @@ export class CreateUserService {
       birthDate: new Date(birthDate),
       active: true,
       createdAt: new Date(),
+      updatedAt: new Date(),
     };
 
     const user = await this.userRepository.create(newUser);

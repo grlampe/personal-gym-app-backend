@@ -14,6 +14,7 @@ export class UpdatePasswordService {
     }
 
     findUser.password = await hash(newPassword, 8);
+    findUser.updatedAt = new Date();
 
     await this.userRepository.updatePassword(id, findUser);
   }

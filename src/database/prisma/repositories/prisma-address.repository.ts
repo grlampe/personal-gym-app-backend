@@ -18,4 +18,11 @@ export class PrismaAddressRepository implements AddressRepository {
       where: { userID },
     });
   }
+
+  async updateAddress(id: string, updatedAddress: Address): Promise<void> {
+    await this.prismaService.address.update({
+      where: { id },
+      data: updatedAddress,
+    });
+  }
 }
