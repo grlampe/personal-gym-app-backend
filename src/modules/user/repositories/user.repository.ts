@@ -6,4 +6,5 @@ export abstract class UserRepository {
   abstract findByDocument(document: string): Promise<User>;
   abstract findById(id: string): Promise<User>;
   abstract updatePassword(id: string, updatedUser: User): Promise<void>;
+  abstract findAll(): Promise<User[]>;
 }

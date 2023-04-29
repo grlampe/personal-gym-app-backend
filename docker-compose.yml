@@ -4,7 +4,6 @@ services:
   database_gymapp:
     image: postgres
     container_name: database_gymapp
-    restart: always
     ports:
       - 5432:5432
     environment:

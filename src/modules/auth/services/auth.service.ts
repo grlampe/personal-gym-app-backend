@@ -26,7 +26,8 @@ export class AuthService {
     }
 
     if (user && passwordMatch) {
-      const { password, ...result } = user;
+      const { ...result } = user;
+      delete user.password;
       return result;
     }
 
