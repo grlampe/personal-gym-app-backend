@@ -5,46 +5,38 @@ import {
   Param,
   Post,
   Put,
-  Req,
   UseGuards,
 } from '@nestjs/common';
 import { User } from '@prisma/client';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guards';
-import { CreateUserDTO } from './dtos/createUserDTO';
 import { CreateUserService } from './services/createUser.service';
 import { FindUserByIdService } from './services/findUserById.service';
 import { ListAllUserService } from './services/listAllUser.service';
-import { UpdatePasswordService } from './services/updatepassword.service';
+import { CreateUserDTO } from './dtos/createUserDTO';
+import { UpdateUserDTO } from './dtos/updateUserDTO';
+import { UpdateUserService } from './services/updateUserservice';
 
 @Controller('user')
 export class UserController {
   constructor(
     private readonly createUserService: CreateUserService,
-    private readonly updatePasswordService: UpdatePasswordService,
+    private readonly updateUserService: UpdateUserService,
     private readonly listAllUserService: ListAllUserService,
     private readonly findUserByIdService: FindUserByIdService,
   ) {}
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  async create(@Body() body: CreateUserDTO): Promise<User> {
-    const { name, email, password, document, birthDate } = body;
-
-    return await this.createUserService.execute({
-      name,
-      email,
-      password,
-      document,
-      birthDate,
-    });
+  async addUser(@Body() userDto: CreateUserDTO) {
+    await this.createUserService.execute(userDto);
+    return { message: `User ${userDto.email} created` };
   }
 
   @UseGuards(JwtAuthGuard)
-  @Put('changePassword')
-  async updatePassword(@Body() body, @Req() req): Promise<void> {
-    const { password } = body;
-    const { userID } = req.user;
-    return await this.updatePasswordService.execute(userID, password);
+  @Put()
+  async updateUser(@Body() userDto: UpdateUserDTO) {
+    await this.updateUserService.execute(userDto);
+    return { message: `User ${userDto.id} updated` };
   }
 
   @UseGuards(JwtAuthGuard)

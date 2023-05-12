@@ -7,6 +7,12 @@ export class FindUserByIdService {
   constructor(private readonly userRepository: UserRepository) {}
 
   async execute(id: string): Promise<User> {
-    return await this.userRepository.findById(id);
+    const resp = await this.userRepository.findById(id);
+
+    if (resp.password) {
+      delete resp.password;
+    }
+
+    return resp;
   }
 }

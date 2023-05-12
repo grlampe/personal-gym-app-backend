@@ -1,8 +1,6 @@
 import { Module } from '@nestjs/common';
-import { AddressRepository } from 'src/modules/address/repositories/address.repository';
 import { UserRepository } from 'src/modules/user/repositories/user.repository';
 import { PrismaService } from './prisma/prisma.service';
-import { PrismaAddressRepository } from './prisma/repositories/prisma-address.repository';
 import { PrismaUserRepository } from './prisma/repositories/prisma-user.repository';
 
 @Module({
@@ -12,11 +10,7 @@ import { PrismaUserRepository } from './prisma/repositories/prisma-user.reposito
       provide: UserRepository,
       useClass: PrismaUserRepository,
     },
-    {
-      provide: AddressRepository,
-      useClass: PrismaAddressRepository,
-    },
   ],
-  exports: [UserRepository, AddressRepository],
+  exports: [UserRepository],
 })
 export class DatabaseModule {}
