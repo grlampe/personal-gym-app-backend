@@ -9,7 +9,7 @@ export class FindUserByIdService {
   async execute(id: string): Promise<User> {
     const resp = await this.userRepository.findById(id);
 
-    if (resp.password) {
+    if (resp?.password) {
       delete resp.password;
     }
 
