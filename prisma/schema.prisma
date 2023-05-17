@@ -16,7 +16,7 @@ model User {
   email             String    @unique
   password          String
   cpf               String    @unique
-  birthDate         DateTime  @db.Date()
+  birthDate         DateTime  @db.Timestamptz()
   addressStreet     String    @map("address_street")
   addressNumber     String    @map("address_number")
   addressZipCode    String    @map("address_zip_code")

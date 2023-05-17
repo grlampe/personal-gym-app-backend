@@ -5,7 +5,7 @@ CREATE TABLE "tb_user" (
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "cpf" TEXT NOT NULL,
-    "birthDate" DATE NOT NULL,
+    "birthDate" TIMESTAMPTZ NOT NULL,
     "address_street" TEXT NOT NULL,
     "address_number" TEXT NOT NULL,
     "address_zip_code" TEXT NOT NULL,
