@@ -19,6 +19,10 @@ export class AuthService {
       return null;
     }
 
+    if (!user.active) {
+      return null;
+    }
+
     passwordMatch = user.password === pass;
 
     if (!passwordMatch) {
@@ -37,8 +41,13 @@ export class AuthService {
   async login(user: any) {
     const payload = { username: user.email, sub: user.id };
 
+    const currentUser = await this.userRepository.findById(user.id);
+
+    delete currentUser.password;
+
     return {
       access_token: this.jwtService.sign(payload),
+      user: currentUser,
     };
   }
 }
