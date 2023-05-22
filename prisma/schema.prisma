@@ -30,3 +30,12 @@ model User {
 
   @@map("tb_user")
 }
+
+model CategoryExercise {
+  id        String    @id @default(uuid())
+  name      String    @unique
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime? @default(now()) @map("updated_at") @db.Timestamptz()
+
+  @@map("tb_category_exercise")
+}
