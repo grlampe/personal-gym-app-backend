@@ -19,11 +19,12 @@ export class CreateCategoryExerciseService {
       )}`,
     );
 
-    const findUserEmail = await this.categoryExerciseRepository.findByName(
-      createCategoryExerciseDto.name,
-    );
+    const findCategoryExerciseEmail =
+      await this.categoryExerciseRepository.findByName(
+        createCategoryExerciseDto.name,
+      );
 
-    if (findUserEmail) {
+    if (findCategoryExerciseEmail) {
       throw new BadRequestException('Category Exercise already exists');
     }
 
