@@ -34,6 +34,7 @@ model User {
 model CategoryExercise {
   id        String    @id @default(uuid())
   name      String    @unique
+  active    Boolean   @default(true)
   createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime? @default(now()) @map("updated_at") @db.Timestamptz()
 

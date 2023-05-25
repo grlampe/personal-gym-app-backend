@@ -4,6 +4,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { LoginModule } from './modules/login/login.module';
 import { UserModule } from './modules/user/user.module';
 import { ConfigModule } from '@nestjs/config';
+import { CategoryExerciseModule } from './modules/categoryExercise/categoryExercise.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { ConfigModule } from '@nestjs/config';
     UserModule,
     AuthModule,
     LoginModule,
+    CategoryExerciseModule,
   ],
   controllers: [],
   providers: [],
