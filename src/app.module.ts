@@ -6,6 +6,7 @@ import { UserModule } from './modules/user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { CategoryExerciseModule } from './modules/categoryExercise/categoryExercise.module';
 import { ExerciseModule } from './modules/exercise/exercise.module';
+import { ExerciseOnCategoryExerciseModule } from './modules/exerciseOnCategoryExercise/exerciseOnCategoryExercise.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ExerciseModule } from './modules/exercise/exercise.module';
     LoginModule,
     CategoryExerciseModule,
     ExerciseModule,
+    ExerciseOnCategoryExerciseModule,
   ],
   controllers: [],
   providers: [],

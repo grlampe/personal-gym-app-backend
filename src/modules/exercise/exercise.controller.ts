@@ -27,16 +27,16 @@ export class ExerciseController {
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  async addUser(@Body() ExerciseDto: CreateExerciseDTO) {
-    await this.createExerciseService.execute(ExerciseDto);
-    return { message: `Exercise ${ExerciseDto.name} created` };
+  async addUser(@Body() exerciseDto: CreateExerciseDTO) {
+    await this.createExerciseService.execute(exerciseDto);
+    return { message: `Exercise ${exerciseDto.name} created` };
   }
 
   @UseGuards(JwtAuthGuard)
   @Put()
-  async updateUser(@Body() ExerciseDto: UpdateExerciseDTO) {
-    await this.updateExerciseService.execute(ExerciseDto);
-    return { message: `Exercise ${ExerciseDto.id} updated` };
+  async updateUser(@Body() exerciseDto: UpdateExerciseDTO) {
+    await this.updateExerciseService.execute(exerciseDto);
+    return { message: `Exercise ${exerciseDto.id} updated` };
   }
 
   @UseGuards(JwtAuthGuard)

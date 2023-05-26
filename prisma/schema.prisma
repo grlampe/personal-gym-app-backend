@@ -32,21 +32,35 @@ model User {
 }
 
 model CategoryExercise {
-  id        String    @id @default(uuid())
-  name      String    @unique
-  active    Boolean   @default(true)
-  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz()
-  updatedAt DateTime? @default(now()) @map("updated_at") @db.Timestamptz()
+  id                         String                       @id @default(uuid())
+  name                       String                       @unique
+  active                     Boolean                      @default(true)
+  createdAt                  DateTime                     @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt                  DateTime?                    @default(now()) @map("updated_at") @db.Timestamptz()
+  ExerciseOnCategoryExercise ExerciseOnCategoryExercise[]
 
   @@map("tb_category_exercise")
 }
 
 model Exercise {
-  id        String    @id @default(uuid())
-  name      String    @unique
-  active    Boolean   @default(true)
-  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz()
-  updatedAt DateTime? @default(now()) @map("updated_at") @db.Timestamptz()
+  id                         String                       @id @default(uuid())
+  name                       String                       @unique
+  active                     Boolean                      @default(true)
+  createdAt                  DateTime                     @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt                  DateTime?                    @default(now()) @map("updated_at") @db.Timestamptz()
+  ExerciseOnCategoryExercise ExerciseOnCategoryExercise[]
 
   @@map("tb_exercise")
+}
+
+model ExerciseOnCategoryExercise {
+  id                 String           @id @default(uuid())
+  exercise           Exercise         @relation(fields: [exerciseId], references: [id])
+  exerciseId         String
+  categoryExercise   CategoryExercise @relation(fields: [categoryExerciseId], references: [id])
+  categoryExerciseId String
+  createdAt          DateTime         @default(now()) @map("created_at") @db.Timestamptz()
+
+  @@unique([exerciseId, categoryExerciseId])
+  @@map("tb_exercise_category_exercise")
 }
