@@ -1,3 +1,4 @@
+import { BodyMeasurementModule } from './modules/bodyMeasurement/bodyMeasurement.module';
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './modules/auth/auth.module';
@@ -20,6 +21,7 @@ import { ExerciseOnCategoryExerciseModule } from './modules/exerciseOnCategoryEx
     CategoryExerciseModule,
     ExerciseModule,
     ExerciseOnCategoryExerciseModule,
+    BodyMeasurementModule,
   ],
   controllers: [],
   providers: [],

@@ -11,22 +11,23 @@ datasource db {
 }
 
 model User {
-  id                String    @id @default(uuid())
+  id                String            @id @default(uuid())
   name              String
-  email             String    @unique
+  email             String            @unique
   password          String
-  cpf               String    @unique
-  birthDate         DateTime  @db.Timestamptz()
-  addressStreet     String    @map("address_street")
-  addressNumber     String    @map("address_number")
-  addressZipCode    String    @map("address_zip_code")
-  addressDistrict   String    @map("address_district")
-  addressCity       String    @map("address_city")
-  addressState      String    @map("address_state")
-  addressComplement String?   @map("address_complement")
-  active            Boolean   @default(true)
-  createdAt         DateTime  @default(now()) @map("created_at") @db.Timestamptz()
-  updatedAt         DateTime? @default(now()) @map("updated_at") @db.Timestamptz()
+  cpf               String            @unique
+  birthDate         DateTime          @db.Timestamptz()
+  addressStreet     String            @map("address_street")
+  addressNumber     String            @map("address_number")
+  addressZipCode    String            @map("address_zip_code")
+  addressDistrict   String            @map("address_district")
+  addressCity       String            @map("address_city")
+  addressState      String            @map("address_state")
+  addressComplement String?           @map("address_complement")
+  active            Boolean           @default(true)
+  createdAt         DateTime          @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt         DateTime?         @default(now()) @map("updated_at") @db.Timestamptz()
+  BodyMeasurement   BodyMeasurement[]
 
   @@map("tb_user")
 }
@@ -63,4 +64,22 @@ model ExerciseOnCategoryExercise {
 
   @@unique([exerciseId, categoryExerciseId])
   @@map("tb_exercise_category_exercise")
+}
+
+model BodyMeasurement {
+  id          String   @id @default(uuid())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+  description String
+  chestBust   Float
+  leftArm     Float
+  rightArm    Float
+  abdomen     Float
+  waist       Float
+  hips        Float
+  leftThigh   Float
+  rightThigh  Float
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz()
+
+  @@map("tb_body_measurement")
 }

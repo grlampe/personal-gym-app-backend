@@ -1,0 +1,51 @@
+import { ListAllBodyMeasurementByIdService } from './services/listAllBodyMeasurementById.service';
+import { ListAllBodyMeasurementByUserIdService } from './services/listAllBodyMeasurementByUserId.service';
+import { BodyMeasurement } from '@prisma/client';
+import { CreateBodyMeasurementDTO } from './dtos/createBodyMeasurementDTO';
+import { JwtAuthGuard } from './../auth/guards/jwt-auth.guards';
+import { ListAllUsersBodyMeasurementService } from './services/listAllUsersBodyMeasurement.service';
+import { Body, Controller, Get, Post, UseGuards, Param } from '@nestjs/common';
+import { CreateBodyMeasurementService } from './services/createBodyMeasurement.service';
+
+@Controller('bodyMeasurement')
+export class BodyMeasurementController {
+  constructor(
+    private readonly createBodyMeasurementService: CreateBodyMeasurementService,
+    private readonly listAllUsersBodyMeasurementService: ListAllUsersBodyMeasurementService,
+    private readonly listAllBodyMeasurementByUserIdService: ListAllBodyMeasurementByUserIdService,
+    private readonly listAllBodyMeasurementByIdService: ListAllBodyMeasurementByIdService,
+  ) {}
+
+  @UseGuards(JwtAuthGuard)
+  @Post()
+  async addBodyMeasurement(
+    @Body() bodyMeasurementDTO: CreateBodyMeasurementDTO,
+  ) {
+    await this.createBodyMeasurementService.execute(bodyMeasurementDTO);
+    return {
+      message: `Body Measurement ${bodyMeasurementDTO.description} created`,
+    };
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get()
+  async getAllUsersBodyMeasurement(): Promise<any[]> {
+    return await this.listAllUsersBodyMeasurementService.execute();
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('/userId/:userId')
+  async getAllBodyMeasurementByUserId(
+    @Param('userId') userId: string,
+  ): Promise<BodyMeasurement[]> {
+    return await this.listAllBodyMeasurementByUserIdService.execute(userId);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('/id/:id')
+  async getAllBodyMeasurementById(
+    @Param('id') id: string,
+  ): Promise<BodyMeasurement> {
+    return await this.listAllBodyMeasurementByIdService.execute(id);
+  }
+}
