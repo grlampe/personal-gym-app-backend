@@ -1,5 +1,6 @@
+import { UpdateBodyMeasurementDTO } from './../../../modules/bodyMeasurement/dtos/updateBodyMeasurement.dto';
 import { BodyMeasurement } from '@prisma/client';
-import { CreateBodyMeasurementDTO } from './../../../modules/bodyMeasurement/dtos/createBodyMeasurementDTO';
+import { CreateBodyMeasurementDTO } from '../../../modules/bodyMeasurement/dtos/createBodyMeasurement.dto';
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
 import { BodyMeasurementRepository } from '../../../modules/bodyMeasurement/repositories/bodyMeasurement.repository';
@@ -14,6 +15,19 @@ export class PrismaBodyMeasurementRepository
     const bodyMeasurement = { ...bodyMeasurementDto };
 
     await this.prismaService.bodyMeasurement.create({
+      data: {
+        ...bodyMeasurement,
+      },
+    });
+  }
+
+  public async update(bodyMeasurementDto: UpdateBodyMeasurementDTO) {
+    const bodyMeasurement = { ...bodyMeasurementDto };
+
+    await this.prismaService.bodyMeasurement.update({
+      where: {
+        id: bodyMeasurement.id,
+      },
       data: {
         ...bodyMeasurement,
       },

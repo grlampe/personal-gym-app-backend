@@ -1,4 +1,4 @@
-import { CreateBodyMeasurementDTO } from './../dtos/createBodyMeasurementDTO';
+import { CreateBodyMeasurementDTO } from '../dtos/createBodyMeasurement.dto';
 import { Injectable, Logger } from '@nestjs/common';
 import { BodyMeasurementRepository } from '../repositories/bodyMeasurement.repository';
 

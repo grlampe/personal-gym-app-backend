@@ -1,10 +1,20 @@
+import { UpdateBodyMeasurementDTO } from './dtos/updateBodyMeasurement.dto';
+import { UpdateBodyMeasurementService } from './services/updateBodyMeasurement.service';
 import { ListAllBodyMeasurementByIdService } from './services/listAllBodyMeasurementById.service';
 import { ListAllBodyMeasurementByUserIdService } from './services/listAllBodyMeasurementByUserId.service';
 import { BodyMeasurement } from '@prisma/client';
-import { CreateBodyMeasurementDTO } from './dtos/createBodyMeasurementDTO';
+import { CreateBodyMeasurementDTO } from './dtos/createBodyMeasurement.dto';
 import { JwtAuthGuard } from './../auth/guards/jwt-auth.guards';
 import { ListAllUsersBodyMeasurementService } from './services/listAllUsersBodyMeasurement.service';
-import { Body, Controller, Get, Post, UseGuards, Param } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  UseGuards,
+  Param,
+  Put,
+} from '@nestjs/common';
 import { CreateBodyMeasurementService } from './services/createBodyMeasurement.service';
 
 @Controller('bodyMeasurement')
@@ -14,6 +24,7 @@ export class BodyMeasurementController {
     private readonly listAllUsersBodyMeasurementService: ListAllUsersBodyMeasurementService,
     private readonly listAllBodyMeasurementByUserIdService: ListAllBodyMeasurementByUserIdService,
     private readonly listAllBodyMeasurementByIdService: ListAllBodyMeasurementByIdService,
+    private readonly updateBodyMeasurementService: UpdateBodyMeasurementService,
   ) {}
 
   @UseGuards(JwtAuthGuard)
@@ -25,6 +36,15 @@ export class BodyMeasurementController {
     return {
       message: `Body Measurement ${bodyMeasurementDTO.description} created`,
     };
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put()
+  async updateBodyMeasurement(
+    @Body() bodyMeasurementDto: UpdateBodyMeasurementDTO,
+  ) {
+    await this.updateBodyMeasurementService.execute(bodyMeasurementDto);
+    return { message: `Body Measurement ${bodyMeasurementDto.id} updated` };
   }
 
   @UseGuards(JwtAuthGuard)
