@@ -9,5 +9,6 @@ export abstract class ReceivingBillsRepository {
   abstract update(receivingBillsDto: UpdateReceivingBillsDTO): Promise<void>;
   abstract delete(id: string): Promise<void>;
   abstract findAll(): Promise<ReceivingBills[]>;
+  abstract findAllByUserId(userId: string): Promise<ReceivingBills[]>;
   abstract findById(id: string): Promise<ReceivingBills>;
 }

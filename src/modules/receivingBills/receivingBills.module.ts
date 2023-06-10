@@ -1,3 +1,4 @@
+import { FindAllReceivingBillsByUserIdService } from './services/findAllReceibingBillsByUserId.service';
 import { CreateReceivingBillsService } from './services/createReceivingBills.service';
 import { DeleteReceivingBillsService } from './services/deleteReceivingBills.service';
 import { FindAllReceivingBillsService } from './services/findAllReceivingBills.service';
@@ -16,6 +17,7 @@ import { Module } from '@nestjs/common';
     FindAllReceivingBillsService,
     DeleteReceivingBillsService,
     CreateReceivingBillsService,
+    FindAllReceivingBillsByUserIdService,
   ],
 })
 export class ReceivingBillsModule {}

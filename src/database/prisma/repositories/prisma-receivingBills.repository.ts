@@ -49,6 +49,33 @@ export class PrismaReceivingBillsRepository
       orderBy: {
         createdAt: 'desc',
       },
+      include: {
+        user: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+      },
+    });
+  }
+
+  async findAllByUserId(userId: string): Promise<ReceivingBills[]> {
+    return await this.prismaService.receivingBills.findMany({
+      where: {
+        userId,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+      include: {
+        user: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+      },
     });
   }
 
@@ -56,6 +83,14 @@ export class PrismaReceivingBillsRepository
     return await this.prismaService.receivingBills.findFirst({
       where: {
         id,
+      },
+      include: {
+        user: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
       },
     });
   }

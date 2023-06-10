@@ -1,3 +1,4 @@
+import { FindAllReceivingBillsByUserIdService } from './services/findAllReceibingBillsByUserId.service';
 import { ReceivingBills } from '@prisma/client';
 import {
   CreateReceivingBillsDTO,
@@ -28,6 +29,7 @@ export class ReceivingBillsController {
     private readonly findAllReceivingBillsService: FindAllReceivingBillsService,
     private readonly deleteReceivingBillsService: DeleteReceivingBillsService,
     private readonly createReceivingBillsService: CreateReceivingBillsService,
+    private readonly findAllReceivingBillsByUserIdService: FindAllReceivingBillsByUserIdService,
   ) {}
 
   @UseGuards(JwtAuthGuard)
@@ -59,6 +61,14 @@ export class ReceivingBillsController {
   @Get()
   async getAllReceivingBills(): Promise<ReceivingBills[]> {
     return await this.findAllReceivingBillsService.execute();
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('/:userId')
+  async findAllByUserId(
+    @Param('userId') userId: string,
+  ): Promise<ReceivingBills[]> {
+    return await this.findAllReceivingBillsByUserIdService.execute(userId);
   }
 
   @UseGuards(JwtAuthGuard)
