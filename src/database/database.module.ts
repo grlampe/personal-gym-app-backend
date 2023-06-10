@@ -1,3 +1,4 @@
+import { PrismaReceivingBillsRepository } from './prisma/repositories/prisma-receivingBills.repository';
 import { PrismaBodyMeasurementRepository } from './prisma/repositories/prisma-bodyMeasurement.repository';
 import { Module } from '@nestjs/common';
 import { UserRepository } from 'src/modules/user/repositories/user.repository';
@@ -10,6 +11,7 @@ import { PrismaUserRepository } from './prisma/repositories/prisma-user.reposito
 import { ExerciseOnCategoryExerciseRepository } from '../modules/exerciseOnCategoryExercise/repositories/exerciseOnCategoryExercise.repository';
 import { PrismaExerciseOnCategoryExerciseRepository } from './prisma/repositories/prisma-exerciseOnCategoryExercise.repository';
 import { BodyMeasurementRepository } from '../modules/bodyMeasurement/repositories/bodyMeasurement.repository';
+import { ReceivingBillsRepository } from '../modules/receivingBills/repositories/receivingBills.repository';
 
 @Module({
   providers: [
@@ -34,6 +36,10 @@ import { BodyMeasurementRepository } from '../modules/bodyMeasurement/repositori
       provide: BodyMeasurementRepository,
       useClass: PrismaBodyMeasurementRepository,
     },
+    {
+      provide: ReceivingBillsRepository,
+      useClass: PrismaReceivingBillsRepository,
+    },
   ],
   exports: [
     UserRepository,
@@ -41,6 +47,7 @@ import { BodyMeasurementRepository } from '../modules/bodyMeasurement/repositori
     ExerciseRepository,
     ExerciseOnCategoryExerciseRepository,
     BodyMeasurementRepository,
+    ReceivingBillsRepository,
   ],
 })
 export class DatabaseModule {}

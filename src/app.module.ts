@@ -1,3 +1,4 @@
+import { ReceivingBillsModule } from './modules/receivingBills/receivingBills.module';
 import { BodyMeasurementModule } from './modules/bodyMeasurement/bodyMeasurement.module';
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from './database/database.module';
@@ -22,6 +23,7 @@ import { ExerciseOnCategoryExerciseModule } from './modules/exerciseOnCategoryEx
     ExerciseModule,
     ExerciseOnCategoryExerciseModule,
     BodyMeasurementModule,
+    ReceivingBillsModule,
   ],
   controllers: [],
   providers: [],
