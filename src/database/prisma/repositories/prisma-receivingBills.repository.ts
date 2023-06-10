@@ -16,6 +16,10 @@ export class PrismaReceivingBillsRepository
   async create(receivingBillsDto: CreateReceivingBillsDTO): Promise<void> {
     const receivingBills = { ...receivingBillsDto };
 
+    if (receivingBills.paidAt) {
+      receivingBills.paidAt = new Date(receivingBills.paidAt);
+    }
+
     await this.prismaService.receivingBills.create({
       data: {
         ...receivingBills,
@@ -25,6 +29,10 @@ export class PrismaReceivingBillsRepository
 
   async update(receivingBillsDto: UpdateReceivingBillsDTO): Promise<void> {
     const receivingBills = { ...receivingBillsDto };
+
+    if (receivingBills.paidAt) {
+      receivingBills.paidAt = new Date(receivingBills.paidAt);
+    }
 
     await this.prismaService.receivingBills.update({
       where: {

@@ -64,7 +64,7 @@ export class ReceivingBillsController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('/:userId')
+  @Get('/user/:userId')
   async findAllByUserId(
     @Param('userId') userId: string,
   ): Promise<ReceivingBills[]> {
