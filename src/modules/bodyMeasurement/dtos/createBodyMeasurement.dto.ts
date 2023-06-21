@@ -13,6 +13,14 @@ export class CreateBodyMeasurementDTO {
 
   @IsNotEmpty()
   @IsNumber()
+  height: number;
+
+  @IsNotEmpty()
+  @IsNumber()
+  weight: number;
+
+  @IsNotEmpty()
+  @IsNumber()
   chestBust: number;
 
   @IsNotEmpty()

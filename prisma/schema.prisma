@@ -72,6 +72,8 @@ model BodyMeasurement {
   user        User     @relation(fields: [userId], references: [id])
   userId      String
   description String
+  height      Float
+  weight      Float
   chestBust   Float
   leftArm     Float
   rightArm    Float

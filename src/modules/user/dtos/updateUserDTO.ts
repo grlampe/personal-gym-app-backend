@@ -19,7 +19,7 @@ export class UpdateUserDTO {
   @IsString()
   readonly email: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   readonly password: string;
 
