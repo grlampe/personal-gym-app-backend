@@ -21,6 +21,10 @@ export class CreateReceivingBillsDTO {
   @IsNumber()
   amount: number;
 
+  @IsDateString()
+  @IsNotEmpty()
+  expirationAt: Date;
+
   @IsOptional()
   @IsDateString()
   paidAt: Date;
@@ -42,6 +46,10 @@ export class UpdateReceivingBillsDTO {
   @IsNotEmpty()
   @IsNumber()
   amount: number;
+
+  @IsDateString()
+  @IsNotEmpty()
+  expirationAt: Date;
 
   @IsOptional()
   @IsDateString()

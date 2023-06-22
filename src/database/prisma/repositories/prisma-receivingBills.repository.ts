@@ -20,6 +20,10 @@ export class PrismaReceivingBillsRepository
       receivingBills.paidAt = new Date(receivingBills.paidAt);
     }
 
+    if (receivingBills.expirationAt) {
+      receivingBills.expirationAt = new Date(receivingBills.expirationAt);
+    }
+
     await this.prismaService.receivingBills.create({
       data: {
         ...receivingBills,
@@ -32,6 +36,10 @@ export class PrismaReceivingBillsRepository
 
     if (receivingBills.paidAt) {
       receivingBills.paidAt = new Date(receivingBills.paidAt);
+    }
+
+    if (receivingBills.expirationAt) {
+      receivingBills.expirationAt = new Date(receivingBills.expirationAt);
     }
 
     await this.prismaService.receivingBills.update({

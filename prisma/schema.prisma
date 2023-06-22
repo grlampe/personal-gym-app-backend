@@ -88,11 +88,12 @@ model BodyMeasurement {
 }
 
 model ReceivingBills {
-  id          String    @id @default(uuid())
-  user        User      @relation(fields: [userId], references: [id])
-  userId      String
-  description String
-  amount      Float
-  paidAt      DateTime? @map("paid_at") @db.Timestamptz()
-  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz()
+  id           String    @id @default(uuid())
+  user         User      @relation(fields: [userId], references: [id])
+  userId       String
+  description  String
+  amount       Float
+  expirationAt DateTime  @map("expiration_at") @db.Timestamptz()
+  paidAt       DateTime? @map("paid_at") @db.Timestamptz()
+  createdAt    DateTime  @default(now()) @map("created_at") @db.Timestamptz()
 }
