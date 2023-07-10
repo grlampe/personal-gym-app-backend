@@ -56,7 +56,8 @@ export class PreWorkoutController {
 
   @UseGuards(JwtAuthGuard)
   @Delete('/:id')
-  async deletePreWorkoutById(@Param('id') id: string): Promise<void> {
+  async deletePreWorkoutById(@Param('id') id: string) {
     await this.deletePreWorkoutService.execute(id);
+    return { message: `PreWorkout ${id} deleted` };
   }
 }

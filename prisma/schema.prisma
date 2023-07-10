@@ -104,7 +104,7 @@ model ReceivingBills {
 model PreWorkout {
   id                   String                 @id @default(uuid())
   description          String
-  active               Boolean
+  active               Boolean                @default(true)
   PreWorkoutOnExercise PreWorkoutOnExercise[]
 
   @@map("tb_pre-workout")
