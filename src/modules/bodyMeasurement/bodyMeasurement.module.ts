@@ -6,6 +6,7 @@ import { CreateBodyMeasurementService } from './services/createBodyMeasurement.s
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from '../../database/database.module';
 import { BodyMeasurementController } from './bodyMeasurement.controller';
+import { DeleteBodyMeasurementService } from './services/deleteBodyMeasurement.service';
 
 @Module({
   imports: [DatabaseModule],
@@ -16,6 +17,7 @@ import { BodyMeasurementController } from './bodyMeasurement.controller';
     ListAllBodyMeasurementByUserIdService,
     ListAllBodyMeasurementByIdService,
     UpdateBodyMeasurementService,
+    DeleteBodyMeasurementService,
   ],
 })
 export class BodyMeasurementModule {}

@@ -48,4 +48,12 @@ export class PrismaExerciseRepository implements ExerciseRepository {
   async findAll(): Promise<Exercise[]> {
     return await this.prismaService.exercise.findMany();
   }
+
+  async delete(id: string): Promise<void> {
+    await this.prismaService.exercise.delete({
+      where: {
+        id,
+      },
+    });
+  }
 }

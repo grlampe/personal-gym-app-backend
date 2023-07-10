@@ -64,4 +64,12 @@ export class PrismaUserRepository implements UserRepository {
   async findAll(): Promise<User[]> {
     return await this.prismaService.user.findMany();
   }
+
+  async delete(id: string): Promise<void> {
+    await this.prismaService.user.delete({
+      where: {
+        id,
+      },
+    });
+  }
 }

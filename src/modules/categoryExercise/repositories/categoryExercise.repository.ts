@@ -12,4 +12,5 @@ export abstract class CategoryExerciseRepository {
     categoryExerciseDto: UpdateCategoryExerciseDTO,
   ): Promise<void>;
   abstract findAll(): Promise<CategoryExercise[]>;
+  abstract delete(id: string): Promise<void>;
 }

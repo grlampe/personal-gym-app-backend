@@ -8,4 +8,5 @@ export abstract class BodyMeasurementRepository {
   abstract findAllByUserId(userId: string): Promise<BodyMeasurement[]>;
   abstract findAllById(id: string): Promise<BodyMeasurement>;
   abstract update(bodyMeasurementDto: UpdateBodyMeasurementDTO): Promise<void>;
+  abstract delete(id: string): Promise<void>;
 }

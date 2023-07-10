@@ -70,4 +70,12 @@ export class PrismaBodyMeasurementRepository
       },
     });
   }
+
+  async delete(id: string): Promise<void> {
+    await this.prismaService.bodyMeasurement.delete({
+      where: {
+        id,
+      },
+    });
+  }
 }

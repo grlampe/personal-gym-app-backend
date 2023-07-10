@@ -50,4 +50,12 @@ export class PrismaCategoryExerciseRepository
   async findAll(): Promise<CategoryExercise[]> {
     return await this.prismaService.categoryExercise.findMany();
   }
+
+  async delete(id: string): Promise<void> {
+    await this.prismaService.categoryExercise.delete({
+      where: {
+        id,
+      },
+    });
+  }
 }

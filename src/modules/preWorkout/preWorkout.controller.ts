@@ -6,6 +6,7 @@ import {
   Post,
   Put,
   UseGuards,
+  Delete,
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guards';
 import { CreatePreWorkoutService } from './services/createPreWorkout.service';
@@ -15,6 +16,7 @@ import { FindPreWorkoutByIdService } from './services/findPreWorkoutById.service
 import { CreatePreWorkoutDTO } from './dtos/createPreWorkoutDTO';
 import { UpdatePreWorkoutDTO } from './dtos/updatePreWorkoutDTO';
 import { PreWorkout } from '@prisma/client';
+import { DeletePreWorkoutService } from './services/deletePreWorkout.service';
 
 @Controller('preWorkout')
 export class PreWorkoutController {
@@ -23,6 +25,7 @@ export class PreWorkoutController {
     private readonly updatePreWorkoutService: UpdatePreWorkoutService,
     private readonly listAllPreWorkoutService: ListAllPreWorkoutService,
     private readonly findPreWorkoutByIdService: FindPreWorkoutByIdService,
+    private readonly deletePreWorkoutService: DeletePreWorkoutService,
   ) {}
 
   @UseGuards(JwtAuthGuard)
@@ -49,5 +52,11 @@ export class PreWorkoutController {
   @Get('/:id')
   async findById(@Param('id') id: string): Promise<PreWorkout> {
     return await this.findPreWorkoutByIdService.execute(id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete('/:id')
+  async deletePreWorkoutById(@Param('id') id: string): Promise<void> {
+    await this.deletePreWorkoutService.execute(id);
   }
 }

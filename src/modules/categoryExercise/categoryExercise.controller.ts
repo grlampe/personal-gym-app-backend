@@ -6,6 +6,7 @@ import {
   Post,
   Put,
   UseGuards,
+  Delete,
 } from '@nestjs/common';
 import { CategoryExercise } from '@prisma/client';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guards';
@@ -15,6 +16,7 @@ import { ListAllCategoryExerciseService } from './services/listAllCategoryExerci
 import { CreateCategoryExerciseDTO } from './dtos/createCategoryExerciseDTO';
 import { UpdateCategoryExerciseDTO } from './dtos/updateCategoryExerciseDTO';
 import { UpdateCategoryExerciseService } from './services/updateCategoryExercise.service';
+import { DeleteCategoryExerciseService } from './services/deleteCategoryExercise.service';
 
 @Controller('categoryExercise')
 export class CategoryExerciseController {
@@ -23,6 +25,7 @@ export class CategoryExerciseController {
     private readonly updateCategoryExerciseService: UpdateCategoryExerciseService,
     private readonly listAllCategoryExerciseService: ListAllCategoryExerciseService,
     private readonly findCategoryExerciseByIdService: FindCategoryExerciseByIdService,
+    private readonly deleteCategoryExerciseService: DeleteCategoryExerciseService,
   ) {}
 
   @UseGuards(JwtAuthGuard)
@@ -49,5 +52,11 @@ export class CategoryExerciseController {
   @Get('/:id')
   async findById(@Param('id') id: string): Promise<CategoryExercise> {
     return await this.findCategoryExerciseByIdService.execute(id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete('/:id')
+  async deleteBodyMeasurementById(@Param('id') id: string): Promise<void> {
+    await this.deleteCategoryExerciseService.execute(id);
   }
 }

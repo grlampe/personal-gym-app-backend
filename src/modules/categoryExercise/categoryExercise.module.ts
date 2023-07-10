@@ -5,6 +5,7 @@ import { FindCategoryExerciseByIdService } from './services/findCategoryExercise
 import { ListAllCategoryExerciseService } from './services/listAllCategoryExercise.service';
 import { CategoryExerciseController } from './categoryExercise.controller';
 import { UpdateCategoryExerciseService } from './services/updateCategoryExercise.service';
+import { DeleteCategoryExerciseService } from './services/deleteCategoryExercise.service';
 
 @Module({
   imports: [DatabaseModule],
@@ -14,6 +15,7 @@ import { UpdateCategoryExerciseService } from './services/updateCategoryExercise
     UpdateCategoryExerciseService,
     ListAllCategoryExerciseService,
     FindCategoryExerciseByIdService,
+    DeleteCategoryExerciseService,
   ],
 })
 export class CategoryExerciseModule {}

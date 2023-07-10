@@ -5,6 +5,7 @@ import { CreatePreWorkoutService } from './services/createPreWorkout.service';
 import { UpdatePreWorkoutService } from './services/updatePreWorkout.service';
 import { ListAllPreWorkoutService } from './services/listAllPreWorkout.service';
 import { FindPreWorkoutByIdService } from './services/findPreWorkoutById.service';
+import { DeletePreWorkoutService } from './services/deletePreWorkout.service';
 
 @Module({
   imports: [DatabaseModule],
@@ -14,6 +15,7 @@ import { FindPreWorkoutByIdService } from './services/findPreWorkoutById.service
     UpdatePreWorkoutService,
     ListAllPreWorkoutService,
     FindPreWorkoutByIdService,
+    DeletePreWorkoutService,
   ],
 })
 export class PreWorkoutModule {}

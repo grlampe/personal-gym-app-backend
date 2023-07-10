@@ -14,8 +14,10 @@ import {
   UseGuards,
   Param,
   Put,
+  Delete,
 } from '@nestjs/common';
 import { CreateBodyMeasurementService } from './services/createBodyMeasurement.service';
+import { DeleteBodyMeasurementService } from './services/deleteBodyMeasurement.service';
 
 @Controller('bodyMeasurement')
 export class BodyMeasurementController {
@@ -25,6 +27,7 @@ export class BodyMeasurementController {
     private readonly listAllBodyMeasurementByUserIdService: ListAllBodyMeasurementByUserIdService,
     private readonly listAllBodyMeasurementByIdService: ListAllBodyMeasurementByIdService,
     private readonly updateBodyMeasurementService: UpdateBodyMeasurementService,
+    private readonly deleteBodyMeasurementService: DeleteBodyMeasurementService,
   ) {}
 
   @UseGuards(JwtAuthGuard)
@@ -67,5 +70,11 @@ export class BodyMeasurementController {
     @Param('id') id: string,
   ): Promise<BodyMeasurement> {
     return await this.listAllBodyMeasurementByIdService.execute(id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete('/:id')
+  async deleteBodyMeasurementById(@Param('id') id: string): Promise<void> {
+    await this.deleteBodyMeasurementService.execute(id);
   }
 }

@@ -45,4 +45,12 @@ export class PrismaPreWorkoutRepository implements PreWorkoutRepository {
   async findAll(): Promise<PreWorkout[]> {
     return await this.prismaService.preWorkout.findMany();
   }
+
+  async delete(id: string): Promise<void> {
+    await this.prismaService.preWorkout.delete({
+      where: {
+        id,
+      },
+    });
+  }
 }

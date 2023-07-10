@@ -8,4 +8,5 @@ export abstract class PreWorkoutRepository {
   abstract findById(id: string): Promise<PreWorkout>;
   abstract update(preWorkoutDto: UpdatePreWorkoutDTO): Promise<void>;
   abstract findAll(): Promise<PreWorkout[]>;
+  abstract delete(id: string): Promise<void>;
 }

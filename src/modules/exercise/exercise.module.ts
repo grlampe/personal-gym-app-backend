@@ -5,6 +5,7 @@ import { CreateExerciseService } from './services/createExercise.service';
 import { FindExerciseByIdService } from './services/findExerciseById.service';
 import { ListAllExerciseService } from './services/listAllExercise.service';
 import { UpdateExerciseService } from './services/updateExercise.service';
+import { DeleteExerciseService } from './services/deleteExercise.service';
 
 @Module({
   imports: [DatabaseModule],
@@ -14,6 +15,7 @@ import { UpdateExerciseService } from './services/updateExercise.service';
     UpdateExerciseService,
     ListAllExerciseService,
     FindExerciseByIdService,
+    DeleteExerciseService,
   ],
 })
 export class ExerciseModule {}

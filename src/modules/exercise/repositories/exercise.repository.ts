@@ -8,4 +8,5 @@ export abstract class ExerciseRepository {
   abstract findById(id: string): Promise<Exercise>;
   abstract update(exerciseDto: UpdateExerciseDTO): Promise<void>;
   abstract findAll(): Promise<Exercise[]>;
+  abstract delete(id: string): Promise<void>;
 }
