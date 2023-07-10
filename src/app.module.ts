@@ -9,6 +9,7 @@ import { ConfigModule } from '@nestjs/config';
 import { CategoryExerciseModule } from './modules/categoryExercise/categoryExercise.module';
 import { ExerciseModule } from './modules/exercise/exercise.module';
 import { ExerciseOnCategoryExerciseModule } from './modules/exerciseOnCategoryExercise/exerciseOnCategoryExercise.module';
+import { PreWorkoutModule } from './modules/preWorkout/preWorkout.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { ExerciseOnCategoryExerciseModule } from './modules/exerciseOnCategoryEx
     ExerciseOnCategoryExerciseModule,
     BodyMeasurementModule,
     ReceivingBillsModule,
+    PreWorkoutModule,
   ],
   controllers: [],
   providers: [],

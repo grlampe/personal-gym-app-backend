@@ -12,6 +12,8 @@ import { ExerciseOnCategoryExerciseRepository } from '../modules/exerciseOnCateg
 import { PrismaExerciseOnCategoryExerciseRepository } from './prisma/repositories/prisma-exerciseOnCategoryExercise.repository';
 import { BodyMeasurementRepository } from '../modules/bodyMeasurement/repositories/bodyMeasurement.repository';
 import { ReceivingBillsRepository } from '../modules/receivingBills/repositories/receivingBills.repository';
+import { PreWorkoutRepository } from '../modules/preWorkout/repositories/preWorkout.repository';
+import { PrismaPreWorkoutRepository } from './prisma/repositories/prisma-preWorkout.repository';
 
 @Module({
   providers: [
@@ -40,6 +42,10 @@ import { ReceivingBillsRepository } from '../modules/receivingBills/repositories
       provide: ReceivingBillsRepository,
       useClass: PrismaReceivingBillsRepository,
     },
+    {
+      provide: PreWorkoutRepository,
+      useClass: PrismaPreWorkoutRepository,
+    },
   ],
   exports: [
     UserRepository,
@@ -48,6 +54,7 @@ import { ReceivingBillsRepository } from '../modules/receivingBills/repositories
     ExerciseOnCategoryExerciseRepository,
     BodyMeasurementRepository,
     ReceivingBillsRepository,
+    PreWorkoutRepository,
   ],
 })
 export class DatabaseModule {}

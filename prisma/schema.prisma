@@ -51,6 +51,7 @@ model Exercise {
   createdAt                  DateTime                     @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt                  DateTime?                    @default(now()) @map("updated_at") @db.Timestamptz()
   ExerciseOnCategoryExercise ExerciseOnCategoryExercise[]
+  PreWorkoutOnExercise       PreWorkoutOnExercise[]
 
   @@map("tb_exercise")
 }
@@ -96,4 +97,32 @@ model ReceivingBills {
   expirationAt DateTime  @map("expiration_at") @db.Timestamptz()
   paidAt       DateTime? @map("paid_at") @db.Timestamptz()
   createdAt    DateTime  @default(now()) @map("created_at") @db.Timestamptz()
+
+  @@map("tb_receiving_bills")
+}
+
+model PreWorkout {
+  id                   String                 @id @default(uuid())
+  description          String
+  active               Boolean
+  PreWorkoutOnExercise PreWorkoutOnExercise[]
+
+  @@map("tb_pre-workout")
+}
+
+model PreWorkoutOnExercise {
+  id            String     @id @default(uuid())
+  preWorkout    PreWorkout @relation(fields: [preWorkoutId], references: [id])
+  preWorkoutId  String
+  exercise      Exercise   @relation(fields: [exerciseId], references: [id])
+  exerciseId    String
+  exerciseOrder Int
+  restTime      String
+  series        Int
+  repetitions   String
+  weight        Int
+  observation   String
+  createdAt     DateTime   @default(now()) @map("created_at") @db.Timestamptz()
+
+  @@map("tb_pre-workout-exercise")
 }
