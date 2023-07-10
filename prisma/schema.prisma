@@ -111,18 +111,18 @@ model PreWorkout {
 }
 
 model PreWorkoutOnExercise {
-  id            String     @id @default(uuid())
-  preWorkout    PreWorkout @relation(fields: [preWorkoutId], references: [id])
-  preWorkoutId  String
-  exercise      Exercise   @relation(fields: [exerciseId], references: [id])
-  exerciseId    String
-  exerciseOrder Int
-  restTime      String
-  series        Int
-  repetitions   String
-  weight        Int
-  observation   String
-  createdAt     DateTime   @default(now()) @map("created_at") @db.Timestamptz()
+  id           String     @id @default(uuid())
+  preWorkout   PreWorkout @relation(fields: [preWorkoutId], references: [id])
+  preWorkoutId String
+  exercise     Exercise   @relation(fields: [exerciseId], references: [id])
+  exerciseId   String
+  order        Int
+  restTime     String
+  series       Int
+  repetitions  String
+  weight       Int
+  observation  String
+  createdAt    DateTime   @default(now()) @map("created_at") @db.Timestamptz()
 
   @@map("tb_pre-workout-exercise")
 }
