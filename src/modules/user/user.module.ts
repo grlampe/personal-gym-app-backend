@@ -5,6 +5,7 @@ import { FindUserByIdService } from './services/findUserById.service';
 import { ListAllUserService } from './services/listAllUser.service';
 import { UserController } from './user.controller';
 import { UpdateUserService } from './services/updateUser.service';
+import { DeleteUserService } from './services/deleteUser.service';
 
 @Module({
   imports: [DatabaseModule],
@@ -14,6 +15,7 @@ import { UpdateUserService } from './services/updateUser.service';
     UpdateUserService,
     ListAllUserService,
     FindUserByIdService,
+    DeleteUserService,
   ],
 })
 export class UserModule {}

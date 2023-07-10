@@ -1,5 +1,5 @@
 import { UpdateBodyMeasurementService } from './services/updateBodyMeasurement.service';
-import { ListAllBodyMeasurementByIdService } from './services/listAllBodyMeasurementById.service';
+import { FindBodyMeasurementByIdService } from './services/findBodyMeasurementById.service';
 import { ListAllBodyMeasurementByUserIdService } from './services/listAllBodyMeasurementByUserId.service';
 import { ListAllUsersBodyMeasurementService } from './services/listAllUsersBodyMeasurement.service';
 import { CreateBodyMeasurementService } from './services/createBodyMeasurement.service';
@@ -15,7 +15,7 @@ import { DeleteBodyMeasurementService } from './services/deleteBodyMeasurement.s
     CreateBodyMeasurementService,
     ListAllUsersBodyMeasurementService,
     ListAllBodyMeasurementByUserIdService,
-    ListAllBodyMeasurementByIdService,
+    FindBodyMeasurementByIdService,
     UpdateBodyMeasurementService,
     DeleteBodyMeasurementService,
   ],

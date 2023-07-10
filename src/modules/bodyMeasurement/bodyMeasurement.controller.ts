@@ -1,6 +1,6 @@
 import { UpdateBodyMeasurementDTO } from './dtos/updateBodyMeasurement.dto';
 import { UpdateBodyMeasurementService } from './services/updateBodyMeasurement.service';
-import { ListAllBodyMeasurementByIdService } from './services/listAllBodyMeasurementById.service';
+import { FindBodyMeasurementByIdService } from './services/findBodyMeasurementById.service';
 import { ListAllBodyMeasurementByUserIdService } from './services/listAllBodyMeasurementByUserId.service';
 import { BodyMeasurement } from '@prisma/client';
 import { CreateBodyMeasurementDTO } from './dtos/createBodyMeasurement.dto';
@@ -25,7 +25,7 @@ export class BodyMeasurementController {
     private readonly createBodyMeasurementService: CreateBodyMeasurementService,
     private readonly listAllUsersBodyMeasurementService: ListAllUsersBodyMeasurementService,
     private readonly listAllBodyMeasurementByUserIdService: ListAllBodyMeasurementByUserIdService,
-    private readonly listAllBodyMeasurementByIdService: ListAllBodyMeasurementByIdService,
+    private readonly findBodyMeasurementByIdService: FindBodyMeasurementByIdService,
     private readonly updateBodyMeasurementService: UpdateBodyMeasurementService,
     private readonly deleteBodyMeasurementService: DeleteBodyMeasurementService,
   ) {}
@@ -65,16 +65,18 @@ export class BodyMeasurementController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('/id/:id')
-  async getAllBodyMeasurementById(
+  @Get('/:id')
+  async getBodyMeasurementById(
     @Param('id') id: string,
   ): Promise<BodyMeasurement> {
-    return await this.listAllBodyMeasurementByIdService.execute(id);
+    return await this.findBodyMeasurementByIdService.execute(id);
   }
 
   @UseGuards(JwtAuthGuard)
   @Delete('/:id')
-  async deleteBodyMeasurementById(@Param('id') id: string): Promise<void> {
+  async deleteBodyMeasurementById(@Param('id') id: string) {
     await this.deleteBodyMeasurementService.execute(id);
+
+    return { message: `Body Measurement ${id} deleted` };
   }
 }

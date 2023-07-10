@@ -30,33 +30,34 @@ export class ExerciseController {
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  async addUser(@Body() exerciseDto: CreateExerciseDTO) {
+  async addExercise(@Body() exerciseDto: CreateExerciseDTO) {
     await this.createExerciseService.execute(exerciseDto);
     return { message: `Exercise ${exerciseDto.name} created` };
   }
 
   @UseGuards(JwtAuthGuard)
   @Put()
-  async updateUser(@Body() exerciseDto: UpdateExerciseDTO) {
+  async updateExercise(@Body() exerciseDto: UpdateExerciseDTO) {
     await this.updateExerciseService.execute(exerciseDto);
     return { message: `Exercise ${exerciseDto.id} updated` };
   }
 
   @UseGuards(JwtAuthGuard)
   @Get()
-  async getAllUser(): Promise<Exercise[]> {
+  async getAllExercise(): Promise<Exercise[]> {
     return await this.listAllExerciseService.execute();
   }
 
   @UseGuards(JwtAuthGuard)
   @Get('/:id')
-  async findById(@Param('id') id: string): Promise<Exercise> {
+  async findExerciseById(@Param('id') id: string): Promise<Exercise> {
     return await this.findExerciseByIdService.execute(id);
   }
 
   @UseGuards(JwtAuthGuard)
   @Delete('/:id')
-  async deleteExerciseById(@Param('id') id: string): Promise<void> {
+  async deleteExerciseById(@Param('id') id: string) {
     await this.deleteExerciseService.execute(id);
+    return { message: `Exercise ${id} deleted` };
   }
 }

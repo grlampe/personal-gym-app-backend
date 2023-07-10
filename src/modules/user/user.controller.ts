@@ -6,6 +6,7 @@ import {
   Post,
   Put,
   UseGuards,
+  Delete,
 } from '@nestjs/common';
 import { User } from '@prisma/client';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guards';
@@ -15,6 +16,7 @@ import { ListAllUserService } from './services/listAllUser.service';
 import { CreateUserDTO } from './dtos/createUserDTO';
 import { UpdateUserDTO } from './dtos/updateUserDTO';
 import { UpdateUserService } from './services/updateUser.service';
+import { DeleteUserService } from './services/deleteUser.service';
 
 @Controller('user')
 export class UserController {
@@ -23,6 +25,7 @@ export class UserController {
     private readonly updateUserService: UpdateUserService,
     private readonly listAllUserService: ListAllUserService,
     private readonly findUserByIdService: FindUserByIdService,
+    private readonly deleteUserService: DeleteUserService,
   ) {}
 
   @UseGuards(JwtAuthGuard)
@@ -49,5 +52,12 @@ export class UserController {
   @Get('/:id')
   async findById(@Param('id') id: string): Promise<User> {
     return await this.findUserByIdService.execute(id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete('/:id')
+  async DeleteUserById(@Param('id') id: string) {
+    await this.deleteUserService.execute(id);
+    return { message: `User ${id} deleted` };
   }
 }

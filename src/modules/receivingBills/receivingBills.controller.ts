@@ -54,7 +54,7 @@ export class ReceivingBillsController {
   @Delete('/:id')
   async deleteReceivingBills(@Param('id') id: string) {
     await this.deleteReceivingBillsService.execute(id);
-    return { message: `ReceivingBills ${id} Deleted` };
+    return { message: `ReceivingBills ${id} deleted` };
   }
 
   @UseGuards(JwtAuthGuard)
@@ -65,7 +65,7 @@ export class ReceivingBillsController {
 
   @UseGuards(JwtAuthGuard)
   @Get('/user/:userId')
-  async findAllByUserId(
+  async findAllReceivingBillsByUserId(
     @Param('userId') userId: string,
   ): Promise<ReceivingBills[]> {
     return await this.findAllReceivingBillsByUserIdService.execute(userId);
@@ -73,7 +73,9 @@ export class ReceivingBillsController {
 
   @UseGuards(JwtAuthGuard)
   @Get('/:id')
-  async findById(@Param('id') id: string): Promise<ReceivingBills> {
+  async findReceivingBillsById(
+    @Param('id') id: string,
+  ): Promise<ReceivingBills> {
     return await this.findByIdReceivingBillsService.execute(id);
   }
 }

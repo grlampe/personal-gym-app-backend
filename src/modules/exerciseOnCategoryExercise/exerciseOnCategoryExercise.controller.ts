@@ -35,19 +35,19 @@ export class ExerciseOnCategoryExerciseController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Delete('/:id')
+  @Get('exercideId/:id')
+  async listExerciseOnCategoryExerciseId(@Param('id') id: string) {
+    return await this.findAllByExerciseIdExerciseOnCategoryExerciseService.execute(
+      id,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete('exercideId/:id')
   async removeExerciseOnCategoryExercise(@Param('id') id: string) {
     await this.deleteExerciseOnCategoryExerciseService.execute(id);
     return {
       message: `ExerciseOnCategoryExercise ${id} deleted`,
     };
-  }
-
-  @UseGuards(JwtAuthGuard)
-  @Get('exercideId/:id')
-  async listAllByExerciseId(@Param('id') id: string) {
-    return await this.findAllByExerciseIdExerciseOnCategoryExerciseService.execute(
-      id,
-    );
   }
 }

@@ -3,7 +3,7 @@ import { BodyMeasurement } from '@prisma/client';
 import { BodyMeasurementRepository } from '../repositories/bodyMeasurement.repository';
 
 @Injectable()
-export class ListAllBodyMeasurementByIdService {
+export class FindBodyMeasurementByIdService {
   constructor(
     private readonly bodyMeasurementRepository: BodyMeasurementRepository,
   ) {}
