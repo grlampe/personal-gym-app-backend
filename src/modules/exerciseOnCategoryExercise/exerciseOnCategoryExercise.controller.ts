@@ -12,6 +12,7 @@ import { DeleteExerciseOnCategoryExerciseService } from './services/deleteExerci
 import { CreateExerciseOnCategoryExerciseDTO } from './dtos/exerciseOnCategoryExercise.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guards';
 import { FindAllByExerciseIdExerciseOnCategoryExerciseService } from './services/findAllByExerciseIdExerciseOnCategoryExercise.service';
+import { FindAllByCategoryExerciseIdExerciseOnCategoryExerciseService } from './services/findAllByCategoryExerciseIdExerciseOnCategoryExercise.service';
 
 @Controller('exerciseOnCategoryExercise')
 export class ExerciseOnCategoryExerciseController {
@@ -19,6 +20,7 @@ export class ExerciseOnCategoryExerciseController {
     private readonly createExerciseOnCategoryExerciseService: CreateExerciseOnCategoryExerciseService,
     private readonly deleteExerciseOnCategoryExerciseService: DeleteExerciseOnCategoryExerciseService,
     private readonly findAllByExerciseIdExerciseOnCategoryExerciseService: FindAllByExerciseIdExerciseOnCategoryExerciseService,
+    private readonly findAllByCategoryExerciseIdExerciseOnCategoryExerciseService: FindAllByCategoryExerciseIdExerciseOnCategoryExerciseService,
   ) {}
 
   @UseGuards(JwtAuthGuard)
@@ -38,6 +40,14 @@ export class ExerciseOnCategoryExerciseController {
   @Get('exercideId/:id')
   async listExerciseOnCategoryExerciseId(@Param('id') id: string) {
     return await this.findAllByExerciseIdExerciseOnCategoryExerciseService.execute(
+      id,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('categoryExercideId/:id')
+  async listExerciseOnCategoryByCategoryExerciseId(@Param('id') id: string) {
+    return await this.findAllByCategoryExerciseIdExerciseOnCategoryExerciseService.execute(
       id,
     );
   }

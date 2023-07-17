@@ -8,4 +8,8 @@ export abstract class ExerciseOnCategoryExerciseRepository {
   abstract delete(id: string): Promise<void>;
 
   abstract findAllByExerciseId(exerciseId: string): Promise<any[]>;
+
+  abstract findAllByCategoryExerciseId(
+    categoryExerciseId: string,
+  ): Promise<any[]>;
 }

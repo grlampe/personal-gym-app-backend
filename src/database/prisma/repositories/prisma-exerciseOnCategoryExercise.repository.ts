@@ -35,4 +35,15 @@ export class PrismaExerciseOnCategoryExerciseRepository
       },
     });
   }
+
+  async findAllByCategoryExerciseId(
+    categoryExerciseId: string,
+  ): Promise<any[]> {
+    return await this.prismaService.exerciseOnCategoryExercise.findMany({
+      where: { categoryExerciseId },
+      include: {
+        exercise: true,
+      },
+    });
+  }
 }

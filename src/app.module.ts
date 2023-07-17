@@ -10,6 +10,7 @@ import { CategoryExerciseModule } from './modules/categoryExercise/categoryExerc
 import { ExerciseModule } from './modules/exercise/exercise.module';
 import { ExerciseOnCategoryExerciseModule } from './modules/exerciseOnCategoryExercise/exerciseOnCategoryExercise.module';
 import { PreWorkoutModule } from './modules/preWorkout/preWorkout.module';
+import { PreWorkoutOnExerciseModule } from './modules/preWorkoutOnExercise/preWorkoutOnExercise.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { PreWorkoutModule } from './modules/preWorkout/preWorkout.module';
     BodyMeasurementModule,
     ReceivingBillsModule,
     PreWorkoutModule,
+    PreWorkoutOnExerciseModule,
   ],
   controllers: [],
   providers: [],

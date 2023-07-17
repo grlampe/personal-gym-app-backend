@@ -121,7 +121,7 @@ model PreWorkoutOnExercise {
   series       Int
   repetitions  String
   weight       Int
-  observation  String
+  observation  String?
   createdAt    DateTime   @default(now()) @map("created_at") @db.Timestamptz()
 
   @@map("tb_pre-workout-exercise")

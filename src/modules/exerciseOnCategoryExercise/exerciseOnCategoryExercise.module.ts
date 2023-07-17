@@ -4,6 +4,7 @@ import { ExerciseOnCategoryExerciseController } from './exerciseOnCategoryExerci
 import { CreateExerciseOnCategoryExerciseService } from './services/createExerciseOnCategoryExercise.service';
 import { DeleteExerciseOnCategoryExerciseService } from './services/deleteExerciseOnCategoryExercise.service';
 import { FindAllByExerciseIdExerciseOnCategoryExerciseService } from './services/findAllByExerciseIdExerciseOnCategoryExercise.service';
+import { FindAllByCategoryExerciseIdExerciseOnCategoryExerciseService } from './services/findAllByCategoryExerciseIdExerciseOnCategoryExercise.service';
 
 @Module({
   imports: [DatabaseModule],
@@ -12,6 +13,7 @@ import { FindAllByExerciseIdExerciseOnCategoryExerciseService } from './services
     CreateExerciseOnCategoryExerciseService,
     DeleteExerciseOnCategoryExerciseService,
     FindAllByExerciseIdExerciseOnCategoryExerciseService,
+    FindAllByCategoryExerciseIdExerciseOnCategoryExerciseService,
   ],
 })
 export class ExerciseOnCategoryExerciseModule {}
