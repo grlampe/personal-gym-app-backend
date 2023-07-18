@@ -29,4 +29,17 @@ export class PrismaPreWorkoutOnExerciseRepository
       where: { id: id },
     });
   }
+
+  async findAllByPreWorkoutId(
+    preWorkoutId: string,
+  ): Promise<PreWorkoutOnExercise[]> {
+    return await this.prismaService.preWorkoutOnExercise.findMany({
+      where: {
+        preWorkoutId,
+      },
+      include: {
+        exercise: true,
+      },
+    });
+  }
 }

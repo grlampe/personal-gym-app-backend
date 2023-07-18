@@ -10,4 +10,7 @@ export abstract class PreWorkoutOnExerciseRepository {
   // abstract update(preWorkoutDto: UpdatePreWorkoutDTO): Promise<void>;
   abstract findAll(): Promise<PreWorkoutOnExercise[]>;
   abstract delete(id: string): Promise<void>;
+  abstract findAllByPreWorkoutId(
+    preWorkoutId: string,
+  ): Promise<PreWorkoutOnExercise[]>;
 }

@@ -43,7 +43,11 @@ export class PrismaPreWorkoutRepository implements PreWorkoutRepository {
   }
 
   async findAll(): Promise<PreWorkout[]> {
-    return await this.prismaService.preWorkout.findMany();
+    return await this.prismaService.preWorkout.findMany({
+      orderBy: {
+        description: 'asc',
+      },
+    });
   }
 
   async delete(id: string): Promise<void> {

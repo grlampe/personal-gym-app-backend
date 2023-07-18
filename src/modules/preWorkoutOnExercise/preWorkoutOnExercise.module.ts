@@ -4,6 +4,7 @@ import { PreWorkoutOnExerciseController } from './preWorkoutOnExercise.controlle
 import { CreatePreWorkoutOnExerciseService } from './services/createPreWorkoutOnExercise.service';
 import { ListAllPreWorkoutOnExerciseService } from './services/listAllPreWorkoutOnExercise.service';
 import { DeletePreWorkoutOnExerciseService } from './services/deletePreWorkoutOnExercise.service';
+import { ListAllPreWorkoutOnExerciseByPreWorkoutIdService } from './services/listAllPreWorkoutOnExerciseByPreWorkoutId.service';
 
 @Module({
   imports: [DatabaseModule],
@@ -12,6 +13,7 @@ import { DeletePreWorkoutOnExerciseService } from './services/deletePreWorkoutOn
     CreatePreWorkoutOnExerciseService,
     ListAllPreWorkoutOnExerciseService,
     DeletePreWorkoutOnExerciseService,
+    ListAllPreWorkoutOnExerciseByPreWorkoutIdService,
   ],
 })
 export class PreWorkoutOnExerciseModule {}
