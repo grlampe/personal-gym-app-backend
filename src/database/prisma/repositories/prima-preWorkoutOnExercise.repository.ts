@@ -3,6 +3,7 @@ import { PreWorkoutOnExerciseRepository } from '../../../modules/preWorkoutOnExe
 import { PrismaService } from '../prisma.service';
 import { PreWorkoutOnExercise } from '@prisma/client';
 import { CreatePreWorkoutOnExerciseDTO } from '../../../modules/preWorkoutOnExercise/dtos/createPreWorkoutOnExerciseDTO';
+import { UpdatePreWorkoutOnExerciseDTO } from '../../../modules/preWorkoutOnExercise/dtos/updatePreWorkoutOnExerciseDTO';
 
 @Injectable()
 export class PrismaPreWorkoutOnExerciseRepository
@@ -20,8 +21,17 @@ export class PrismaPreWorkoutOnExerciseRepository
     });
   }
 
-  async findAll(): Promise<PreWorkoutOnExercise[]> {
-    return await this.prismaService.preWorkoutOnExercise.findMany();
+  async update(preWorkoutDto: UpdatePreWorkoutOnExerciseDTO[]): Promise<void> {
+    for (const element of preWorkoutDto) {
+      await this.prismaService.preWorkoutOnExercise.update({
+        where: {
+          id: element.id,
+        },
+        data: {
+          ...element,
+        },
+      });
+    }
   }
 
   async delete(id: string): Promise<void> {

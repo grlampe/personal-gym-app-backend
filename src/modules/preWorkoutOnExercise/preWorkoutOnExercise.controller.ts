@@ -5,20 +5,22 @@ import {
   Get,
   Param,
   Post,
+  Put,
   UseGuards,
 } from '@nestjs/common';
 import { CreatePreWorkoutOnExerciseService } from './services/createPreWorkoutOnExercise.service';
-import { ListAllPreWorkoutOnExerciseService } from './services/listAllPreWorkoutOnExercise.service';
+import { UpdatePreWorkoutOnExerciseService } from './services/updatePreWorkoutOnExercise.service';
 import { DeletePreWorkoutOnExerciseService } from './services/deletePreWorkoutOnExercise.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guards';
 import { CreatePreWorkoutOnExerciseDTO } from './dtos/createPreWorkoutOnExerciseDTO';
 import { ListAllPreWorkoutOnExerciseByPreWorkoutIdService } from './services/listAllPreWorkoutOnExerciseByPreWorkoutId.service';
+import { UpdatePreWorkoutOnExerciseDTO } from './dtos/updatePreWorkoutOnExerciseDTO';
 
 @Controller('preWorkoutOnExercise')
 export class PreWorkoutOnExerciseController {
   constructor(
     private readonly createPreWorkoutOnExerciseService: CreatePreWorkoutOnExerciseService,
-    private readonly listAllPreWorkoutOnExerciseService: ListAllPreWorkoutOnExerciseService,
+    private readonly updatePreWorkoutOnExerciseService: UpdatePreWorkoutOnExerciseService,
     private readonly deletePreWorkoutOnExerciseService: DeletePreWorkoutOnExerciseService,
     private readonly listAllPreWorkoutOnExerciseByPreWorkoutIdService: ListAllPreWorkoutOnExerciseByPreWorkoutIdService,
   ) {}
@@ -33,6 +35,19 @@ export class PreWorkoutOnExerciseController {
     );
     return {
       message: `Exercise ${createPreWorkoutOnExerciseDTO.exerciseId} created on PreWorkoutOnExercise`,
+    };
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put()
+  async updatePreWorkoutOnExercise(
+    @Body() preWorkoutOnExerciseDto: UpdatePreWorkoutOnExerciseDTO[],
+  ) {
+    await this.updatePreWorkoutOnExerciseService.execute(
+      preWorkoutOnExerciseDto,
+    );
+    return {
+      message: `Body Measurement ${preWorkoutOnExerciseDto[0].id} updated`,
     };
   }
 

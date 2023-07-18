@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { DatabaseModule } from '../../database/database.module';
 import { PreWorkoutOnExerciseController } from './preWorkoutOnExercise.controller';
 import { CreatePreWorkoutOnExerciseService } from './services/createPreWorkoutOnExercise.service';
-import { ListAllPreWorkoutOnExerciseService } from './services/listAllPreWorkoutOnExercise.service';
+import { UpdatePreWorkoutOnExerciseService } from './services/updatePreWorkoutOnExercise.service';
 import { DeletePreWorkoutOnExerciseService } from './services/deletePreWorkoutOnExercise.service';
 import { ListAllPreWorkoutOnExerciseByPreWorkoutIdService } from './services/listAllPreWorkoutOnExerciseByPreWorkoutId.service';
 
@@ -11,7 +11,7 @@ import { ListAllPreWorkoutOnExerciseByPreWorkoutIdService } from './services/lis
   controllers: [PreWorkoutOnExerciseController],
   providers: [
     CreatePreWorkoutOnExerciseService,
-    ListAllPreWorkoutOnExerciseService,
+    UpdatePreWorkoutOnExerciseService,
     DeletePreWorkoutOnExerciseService,
     ListAllPreWorkoutOnExerciseByPreWorkoutIdService,
   ],

@@ -1,14 +1,14 @@
 import { PreWorkoutOnExercise } from '@prisma/client';
 import { CreatePreWorkoutOnExerciseDTO } from '../dtos/createPreWorkoutOnExerciseDTO';
+import { UpdatePreWorkoutOnExerciseDTO } from '../dtos/updatePreWorkoutOnExerciseDTO';
 
 export abstract class PreWorkoutOnExerciseRepository {
   abstract create(
     preWorkoutOnExerciseDto: CreatePreWorkoutOnExerciseDTO,
   ): Promise<void>;
-  // abstract findByName(description: string): Promise<PreWorkout>;
-  // abstract findById(id: string): Promise<PreWorkout>;
-  // abstract update(preWorkoutDto: UpdatePreWorkoutDTO): Promise<void>;
-  abstract findAll(): Promise<PreWorkoutOnExercise[]>;
+  abstract update(
+    preWorkoutDto: UpdatePreWorkoutOnExerciseDTO[],
+  ): Promise<void>;
   abstract delete(id: string): Promise<void>;
   abstract findAllByPreWorkoutId(
     preWorkoutId: string,
