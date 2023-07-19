@@ -47,6 +47,9 @@ export class PrismaPreWorkoutOnExerciseRepository
       where: {
         preWorkoutId,
       },
+      orderBy: {
+        order: 'asc',
+      },
       include: {
         exercise: true,
       },

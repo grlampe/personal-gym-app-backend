@@ -63,7 +63,7 @@ export class PrismaReceivingBillsRepository
   async findAll(): Promise<ReceivingBills[]> {
     return await this.prismaService.receivingBills.findMany({
       orderBy: {
-        createdAt: 'desc',
+        expirationAt: 'desc',
       },
       include: {
         user: {

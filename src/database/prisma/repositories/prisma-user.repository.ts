@@ -39,7 +39,6 @@ export class PrismaUserRepository implements UserRepository {
       },
       data: {
         ...user,
-        updatedAt: new Date().toISOString(),
       },
     });
   }
@@ -62,7 +61,11 @@ export class PrismaUserRepository implements UserRepository {
   }
 
   async findAll(): Promise<User[]> {
-    return await this.prismaService.user.findMany();
+    return await this.prismaService.user.findMany({
+      orderBy: {
+        name: 'asc',
+      },
+    });
   }
 
   async delete(id: string): Promise<void> {

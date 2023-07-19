@@ -26,7 +26,6 @@ model User {
   addressComplement String?           @map("address_complement")
   active            Boolean           @default(true)
   createdAt         DateTime          @default(now()) @map("created_at") @db.Timestamptz()
-  updatedAt         DateTime?         @default(now()) @map("updated_at") @db.Timestamptz()
   BodyMeasurement   BodyMeasurement[]
   ReceivingBills    ReceivingBills[]
 
@@ -38,7 +37,6 @@ model CategoryExercise {
   name                       String                       @unique
   active                     Boolean                      @default(true)
   createdAt                  DateTime                     @default(now()) @map("created_at") @db.Timestamptz()
-  updatedAt                  DateTime?                    @default(now()) @map("updated_at") @db.Timestamptz()
   ExerciseOnCategoryExercise ExerciseOnCategoryExercise[]
 
   @@map("tb_category_exercise")
@@ -49,7 +47,6 @@ model Exercise {
   name                       String                       @unique
   active                     Boolean                      @default(true)
   createdAt                  DateTime                     @default(now()) @map("created_at") @db.Timestamptz()
-  updatedAt                  DateTime?                    @default(now()) @map("updated_at") @db.Timestamptz()
   ExerciseOnCategoryExercise ExerciseOnCategoryExercise[]
   PreWorkoutOnExercise       PreWorkoutOnExercise[]
 
@@ -124,5 +121,5 @@ model PreWorkoutOnExercise {
   observation  String?
   createdAt    DateTime   @default(now()) @map("created_at") @db.Timestamptz()
 
-  @@map("tb_pre-workout-exercise")
+  @@map("tb_pre-workout_exercise")
 }

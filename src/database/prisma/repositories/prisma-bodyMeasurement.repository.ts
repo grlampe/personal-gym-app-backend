@@ -36,13 +36,18 @@ export class PrismaBodyMeasurementRepository
 
   async findAllUser(): Promise<any[]> {
     return await this.prismaService.bodyMeasurement.findMany({
-      distinct: [],
+      distinct: ['userId'],
       select: {
         user: {
           select: {
             id: true,
             name: true,
           },
+        },
+      },
+      orderBy: {
+        user: {
+          name: 'asc',
         },
       },
     });
@@ -52,6 +57,9 @@ export class PrismaBodyMeasurementRepository
     return await this.prismaService.bodyMeasurement.findMany({
       where: {
         userId,
+      },
+      orderBy: {
+        createdAt: 'desc',
       },
     });
   }
@@ -67,6 +75,9 @@ export class PrismaBodyMeasurementRepository
             name: true,
           },
         },
+      },
+      orderBy: {
+        createdAt: 'desc',
       },
     });
   }

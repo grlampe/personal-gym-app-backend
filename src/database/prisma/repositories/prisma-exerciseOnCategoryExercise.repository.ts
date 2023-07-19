@@ -33,6 +33,9 @@ export class PrismaExerciseOnCategoryExerciseRepository
       include: {
         categoryExercise: true,
       },
+      orderBy: {
+        createdAt: 'asc',
+      },
     });
   }
 
@@ -43,6 +46,9 @@ export class PrismaExerciseOnCategoryExerciseRepository
       where: { categoryExerciseId },
       include: {
         exercise: true,
+      },
+      orderBy: {
+        createdAt: 'asc',
       },
     });
   }

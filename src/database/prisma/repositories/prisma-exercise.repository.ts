@@ -20,15 +20,14 @@ export class PrismaExerciseRepository implements ExerciseRepository {
   }
 
   public async update(exerciseDto: UpdateExerciseDTO) {
-    const Exercise = { ...exerciseDto };
+    const exercise = { ...exerciseDto };
 
     await this.prismaService.exercise.update({
       where: {
-        id: Exercise.id,
+        id: exercise.id,
       },
       data: {
-        ...Exercise,
-        updatedAt: new Date().toISOString(),
+        ...exercise,
       },
     });
   }
@@ -49,6 +48,9 @@ export class PrismaExerciseRepository implements ExerciseRepository {
     return await this.prismaService.exercise.findMany({
       include: {
         ExerciseOnCategoryExercise: true,
+      },
+      orderBy: {
+        name: 'asc',
       },
     });
   }

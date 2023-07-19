@@ -30,7 +30,6 @@ export class PrismaCategoryExerciseRepository
       },
       data: {
         ...categoryExercise,
-        updatedAt: new Date().toISOString(),
       },
     });
   }
@@ -48,7 +47,11 @@ export class PrismaCategoryExerciseRepository
   }
 
   async findAll(): Promise<CategoryExercise[]> {
-    return await this.prismaService.categoryExercise.findMany();
+    return await this.prismaService.categoryExercise.findMany({
+      orderBy: {
+        name: 'asc',
+      },
+    });
   }
 
   async delete(id: string): Promise<void> {
