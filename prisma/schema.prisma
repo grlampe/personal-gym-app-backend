@@ -28,6 +28,7 @@ model User {
   createdAt         DateTime          @default(now()) @map("created_at") @db.Timestamptz()
   BodyMeasurement   BodyMeasurement[]
   ReceivingBills    ReceivingBills[]
+  Workout           Workout[]
 
   @@map("tb_user")
 }
@@ -122,4 +123,14 @@ model PreWorkoutOnExercise {
   createdAt    DateTime   @default(now()) @map("created_at") @db.Timestamptz()
 
   @@map("tb_pre-workout_exercise")
+}
+
+model Workout {
+  id          String  @id @default(uuid())
+  user        User    @relation(fields: [userId], references: [id])
+  userId      String
+  description String
+  active      Boolean
+
+  @@map("tb_workout")
 }
