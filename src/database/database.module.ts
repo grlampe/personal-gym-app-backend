@@ -18,6 +18,8 @@ import { PrismaPreWorkoutOnExerciseRepository } from './prisma/repositories/prim
 import { PreWorkoutOnExerciseRepository } from '../modules/preWorkoutOnExercise/repositories/preWorkoutOnExercise.repository';
 import { WorkoutRepository } from '../modules/workout/repositories/workout.repository';
 import { PrismaWorkoutRepository } from './prisma/repositories/prisma-workout.repository';
+import { WorkoutOnCategoryRepository } from '../modules/workoutOnCategory/repositories/workoutOnCategory.repository';
+import { PrismaWorkoutOnCategoryRepository } from './prisma/repositories/prisma-workoutOnCategory.repository';
 
 @Module({
   providers: [
@@ -58,6 +60,10 @@ import { PrismaWorkoutRepository } from './prisma/repositories/prisma-workout.re
       provide: WorkoutRepository,
       useClass: PrismaWorkoutRepository,
     },
+    {
+      provide: WorkoutOnCategoryRepository,
+      useClass: PrismaWorkoutOnCategoryRepository,
+    },
   ],
   exports: [
     UserRepository,
@@ -69,6 +75,7 @@ import { PrismaWorkoutRepository } from './prisma/repositories/prisma-workout.re
     PreWorkoutRepository,
     PreWorkoutOnExerciseRepository,
     WorkoutRepository,
+    WorkoutOnCategoryRepository,
   ],
 })
 export class DatabaseModule {}

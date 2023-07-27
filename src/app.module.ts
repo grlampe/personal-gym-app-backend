@@ -11,6 +11,7 @@ import { ExerciseOnCategoryExerciseModule } from './modules/exerciseOnCategoryEx
 import { PreWorkoutModule } from './modules/preWorkout/preWorkout.module';
 import { PreWorkoutOnExerciseModule } from './modules/preWorkoutOnExercise/preWorkoutOnExercise.module';
 import { WorkoutModule } from './modules/workout/workout.module';
+import { WorkoutOnCategoryModule } from './modules/workoutOnCategory/workoutOnCategory.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { WorkoutModule } from './modules/workout/workout.module';
     PreWorkoutModule,
     PreWorkoutOnExerciseModule,
     WorkoutModule,
+    WorkoutOnCategoryModule,
   ],
   controllers: [],
   providers: [],
