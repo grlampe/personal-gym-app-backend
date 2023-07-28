@@ -3,6 +3,7 @@ import { PrismaService } from '../prisma.service';
 import { WorkoutOnCategoryRepository } from '../../../modules/workoutOnCategory/repositories/workoutOnCategory.repository';
 import { CreateWorkoutOnCategoryDTO } from '../../../modules/workoutOnCategory/dtos/createWorkoutOnCategoryDTO';
 import { UpdateWorkoutOnCategoryDTO } from '../../../modules/workoutOnCategory/dtos/updateWorkoutOnCategoryDTO';
+import { WorkoutOnCategory } from '@prisma/client';
 
 @Injectable()
 export class PrismaWorkoutOnCategoryRepository
@@ -26,6 +27,12 @@ export class PrismaWorkoutOnCategoryRepository
   async delete(id: string): Promise<void> {
     await this.prismaService.workoutOnCategory.delete({
       where: { id },
+    });
+  }
+
+  async findAllByWorkoutId(workoutId: string): Promise<WorkoutOnCategory[]> {
+    return await this.prismaService.workoutOnCategory.findMany({
+      where: { workoutId: workoutId },
     });
   }
 }
