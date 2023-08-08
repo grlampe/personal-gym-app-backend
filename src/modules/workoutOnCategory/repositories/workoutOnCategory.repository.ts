@@ -14,4 +14,6 @@ export abstract class WorkoutOnCategoryRepository {
   ): Promise<void>;
 
   abstract findAllByWorkoutId(workoutId: string): Promise<WorkoutOnCategory[]>;
+
+  abstract findById(id: string): Promise<WorkoutOnCategory>;
 }

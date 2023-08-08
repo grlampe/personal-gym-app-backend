@@ -35,4 +35,10 @@ export class PrismaWorkoutOnCategoryRepository
       where: { workoutId: workoutId },
     });
   }
+
+  async findById(id: string): Promise<WorkoutOnCategory> {
+    return await this.prismaService.workoutOnCategory.findFirst({
+      where: { id },
+    });
+  }
 }

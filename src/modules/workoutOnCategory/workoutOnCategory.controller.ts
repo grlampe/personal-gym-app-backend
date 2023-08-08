@@ -16,6 +16,7 @@ import { DeleteWorkoutOnCategoryService } from './services/deleteWorkoutOnCatego
 import { UpdateWorkoutOnCategoryDTO } from './dtos/updateWorkoutOnCategoryDTO';
 import { WorkoutOnCategory } from '@prisma/client';
 import { FindAllByWorkoutIdWorkoutOnCategoryService } from './services/findAllByWorkoutIdWorkoutOnCategory.service';
+import { FindWorkoutOnCategoryByIdService } from './services/findWorkoutOnCategoryById.service';
 
 @Controller('workoutOnCategory')
 export class WorkoutOnCategoryController {
@@ -24,6 +25,7 @@ export class WorkoutOnCategoryController {
     private readonly deleteWorkoutOnCategoryService: DeleteWorkoutOnCategoryService,
     private readonly updateWorkoutOnCategoryService: UpdateWorkoutOnCategoryService,
     private readonly findAllByWorkoutIdWorkoutOnCategoryService: FindAllByWorkoutIdWorkoutOnCategoryService,
+    private readonly findWorkoutOnCategoryByIdService: FindWorkoutOnCategoryByIdService,
   ) {}
 
   @UseGuards(JwtAuthGuard)
@@ -57,6 +59,12 @@ export class WorkoutOnCategoryController {
     return await this.findAllByWorkoutIdWorkoutOnCategoryService.execute(
       workoutId,
     );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('/:id')
+  async getById(@Param('id') id: string): Promise<WorkoutOnCategory> {
+    return await this.findWorkoutOnCategoryByIdService.execute(id);
   }
 
   @UseGuards(JwtAuthGuard)

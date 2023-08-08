@@ -5,6 +5,7 @@ import { WorkoutOnCategoryController } from './workoutOnCategory.controller';
 import { DeleteWorkoutOnCategoryService } from './services/deleteWorkoutOnCategory.service';
 import { CreateWorkoutOnCategoryService } from './services/createWorkoutOnCategory.service';
 import { FindAllByWorkoutIdWorkoutOnCategoryService } from './services/findAllByWorkoutIdWorkoutOnCategory.service';
+import { FindWorkoutOnCategoryByIdService } from './services/findWorkoutOnCategoryById.service';
 
 @Module({
   imports: [DatabaseModule],
@@ -14,6 +15,7 @@ import { FindAllByWorkoutIdWorkoutOnCategoryService } from './services/findAllBy
     DeleteWorkoutOnCategoryService,
     UpdateWorkoutOnCategoryService,
     FindAllByWorkoutIdWorkoutOnCategoryService,
+    FindWorkoutOnCategoryByIdService,
   ],
 })
 export class WorkoutOnCategoryModule {}
