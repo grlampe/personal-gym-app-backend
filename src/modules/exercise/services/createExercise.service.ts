@@ -13,12 +13,12 @@ export class CreateExerciseService {
       `Execute Create Exercise ${JSON.stringify(createExerciseDto)}`,
     );
 
-    const findExerciseEmail = await this.exerciseRepository.findByName(
+    const findExercise = await this.exerciseRepository.findByName(
       createExerciseDto.name,
     );
 
-    if (findExerciseEmail) {
-      throw new BadRequestException('Exercise already exists');
+    if (findExercise) {
+      throw new BadRequestException('Exercício já existe.');
     }
 
     await this.exerciseRepository.create(createExerciseDto);

@@ -18,7 +18,7 @@ export class CreatePreWorkoutService {
     );
 
     if (findPreWorkout) {
-      throw new BadRequestException('Pre Workout already exists');
+      throw new BadRequestException('Pré Treino já existe.');
     }
 
     await this.preWorkoutRepository.create(createPreWorkoutDto);

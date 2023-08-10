@@ -16,7 +16,7 @@ export class CreateUserService {
     );
 
     if (findUserEmail) {
-      throw new BadRequestException('User already exists');
+      throw new BadRequestException('Usuário já existe.');
     }
 
     const findUserDocument = await this.userRepository.findByDocument(
@@ -24,7 +24,7 @@ export class CreateUserService {
     );
 
     if (findUserDocument) {
-      throw new BadRequestException('User already exists');
+      throw new BadRequestException('Usuário já existe.');
     }
 
     await this.userRepository.create(createUserDto);
