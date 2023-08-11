@@ -1,4 +1,9 @@
-import { Injectable, Logger } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+  Logger,
+} from '@nestjs/common';
 import { CategoryExerciseRepository } from '../repositories/categoryExercise.repository';
 @Injectable()
 export class DeleteCategoryExerciseService {
@@ -10,6 +15,18 @@ export class DeleteCategoryExerciseService {
 
   async execute(id: string): Promise<void> {
     this.logger.log(`Execute Delete Category Exercise ${id}`);
-    await this.categoryExerciseRepository.delete(id);
+
+    try {
+      await this.categoryExerciseRepository.delete(id);
+    } catch (error) {
+      if (
+        error.message.includes('Foreign key constraint failed on the field')
+      ) {
+        throw new BadRequestException(
+          'Existem registros vinculádos e este cadastro!',
+        );
+      }
+      throw new InternalServerErrorException(error);
+    }
   }
 }

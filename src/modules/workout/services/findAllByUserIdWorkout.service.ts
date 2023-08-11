@@ -9,8 +9,6 @@ export class FindAllByUserIdWorkoutService {
   constructor(private readonly workoutRepository: WorkoutRepository) {}
 
   async execute(userId: string): Promise<Workout[]> {
-    this.logger.log(`Execute List All By User Id: ${userId}`);
-
     return await this.workoutRepository.findAllByUserId(userId);
   }
 }
