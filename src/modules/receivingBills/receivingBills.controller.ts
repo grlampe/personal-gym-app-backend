@@ -19,7 +19,7 @@ import {
   Param,
   Get,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/guards/jwt-auth.guards';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 
 @Controller('receivingBills')
 export class ReceivingBillsController {

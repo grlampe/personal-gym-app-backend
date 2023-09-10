@@ -9,7 +9,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { User } from '@prisma/client';
-import { JwtAuthGuard } from '../auth/guards/jwt-auth.guards';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CreateUserService } from './services/createUser.service';
 import { FindUserByIdService } from './services/findUserById.service';
 import { ListAllUserService } from './services/listAllUser.service';

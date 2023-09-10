@@ -4,7 +4,7 @@ import { FindBodyMeasurementByIdService } from './services/findBodyMeasurementBy
 import { ListAllBodyMeasurementByUserIdService } from './services/listAllBodyMeasurementByUserId.service';
 import { BodyMeasurement } from '@prisma/client';
 import { CreateBodyMeasurementDTO } from './dtos/createBodyMeasurement.dto';
-import { JwtAuthGuard } from './../auth/guards/jwt-auth.guards';
+import { JwtAuthGuard } from './../auth/guards/jwt-auth.guard';
 import { ListAllUsersBodyMeasurementService } from './services/listAllUsersBodyMeasurement.service';
 import {
   Body,

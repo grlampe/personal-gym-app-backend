@@ -10,7 +10,7 @@ import {
 import { CreateExerciseOnCategoryExerciseService } from './services/createExerciseOnCategoryExercise.service';
 import { DeleteExerciseOnCategoryExerciseService } from './services/deleteExerciseOnCategoryExercise.service';
 import { CreateExerciseOnCategoryExerciseDTO } from './dtos/exerciseOnCategoryExercise.dto';
-import { JwtAuthGuard } from '../auth/guards/jwt-auth.guards';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { FindAllByExerciseIdExerciseOnCategoryExerciseService } from './services/findAllByExerciseIdExerciseOnCategoryExercise.service';
 import { FindAllByCategoryExerciseIdExerciseOnCategoryExerciseService } from './services/findAllByCategoryExerciseIdExerciseOnCategoryExercise.service';
 

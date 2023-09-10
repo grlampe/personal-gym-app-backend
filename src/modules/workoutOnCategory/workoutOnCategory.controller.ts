@@ -10,7 +10,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { CreateWorkoutOnCategoryDTO } from './dtos/createWorkoutOnCategoryDTO';
-import { JwtAuthGuard } from '../auth/guards/jwt-auth.guards';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CreateWorkoutOnCategoryService } from './services/createWorkoutOnCategory.service';
 import { DeleteWorkoutOnCategoryService } from './services/deleteWorkoutOnCategory.service';
 import { UpdateWorkoutOnCategoryDTO } from './dtos/updateWorkoutOnCategoryDTO';

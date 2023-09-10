@@ -8,7 +8,7 @@ import {
   UseGuards,
   Delete,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/guards/jwt-auth.guards';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CreatePreWorkoutService } from './services/createPreWorkout.service';
 import { UpdatePreWorkoutService } from './services/updatePreWorkout.service';
 import { ListAllPreWorkoutService } from './services/listAllPreWorkout.service';

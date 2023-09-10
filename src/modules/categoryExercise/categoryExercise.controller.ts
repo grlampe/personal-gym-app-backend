@@ -9,7 +9,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { CategoryExercise } from '@prisma/client';
-import { JwtAuthGuard } from '../auth/guards/jwt-auth.guards';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CreateCategoryExerciseService } from './services/createCategoryExercise.service';
 import { FindCategoryExerciseByIdService } from './services/findCategoryExerciseById.service';
 import { ListAllCategoryExerciseService } from './services/listAllCategoryExercise.service';

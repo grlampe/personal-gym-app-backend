@@ -9,7 +9,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { Exercise } from '@prisma/client';
-import { JwtAuthGuard } from '../auth/guards/jwt-auth.guards';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CreateExerciseDTO } from './dtos/createExerciseDTO';
 import { UpdateExerciseDTO } from './dtos/updateExerciseDTO';
 import { CreateExerciseService } from './services/createExercise.service';
