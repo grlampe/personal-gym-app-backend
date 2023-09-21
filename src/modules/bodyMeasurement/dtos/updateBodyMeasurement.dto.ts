@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class UpdateBodyMeasurementDTO {
   @IsNotEmpty()
@@ -8,6 +8,10 @@ export class UpdateBodyMeasurementDTO {
   @IsNotEmpty()
   @IsString()
   userId: string;
+
+  @IsOptional()
+  @IsString()
+  workoutId: string;
 
   @IsNotEmpty()
   @IsString()

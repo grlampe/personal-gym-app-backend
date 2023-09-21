@@ -13,12 +13,14 @@ import { PreWorkoutOnExerciseModule } from './modules/preWorkoutOnExercise/preWo
 import { WorkoutModule } from './modules/workout/workout.module';
 import { WorkoutOnCategoryModule } from './modules/workoutOnCategory/workoutOnCategory.module';
 import { WorkoutOnExerciseModule } from './modules/workoutOnExercise/workoutOnExercise.module';
+import { ReportsModule } from './reports/reports.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    ReportsModule,
     UserModule,
     AuthModule,
     LoginModule,

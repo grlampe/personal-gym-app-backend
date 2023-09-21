@@ -72,6 +72,7 @@ import { PrismaWorkoutOnExerciseRepository } from './prisma/repositories/prima-w
     },
   ],
   exports: [
+    PrismaService,
     UserRepository,
     CategoryExerciseRepository,
     ExerciseRepository,
