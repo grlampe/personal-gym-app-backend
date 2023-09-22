@@ -6,6 +6,16 @@ export class Excel4NodeLib {
   private wb: any;
   private ws: any;
 
+  notNumberFields = [
+    'createdAt',
+    'description',
+    'birthDate',
+    'zipCode',
+    'complement',
+    'active',
+    'paidAt',
+  ];
+
   public setUpWorkSheet(workSheetName?: string): void {
     this.wb = new xl.Workbook();
     this.ws = this.wb.addWorksheet(
@@ -40,13 +50,7 @@ export class Excel4NodeLib {
           if (
             (!!Number(record[columnName]) ||
               Number(record[columnName]) === 0) &&
-            columnName !== 'createdAt' &&
-            columnName !== 'description' &&
-            columnName !== 'birthDate' &&
-            columnName !== 'zipCode' &&
-            columnName !== 'complement' &&
-            columnName !== 'active' &&
-            columnName !== 'paidAt'
+            !this.notNumberFields.includes(columnName)
           ) {
             this.ws
               .cell(rowIndex, detailsColumnIndex++)
