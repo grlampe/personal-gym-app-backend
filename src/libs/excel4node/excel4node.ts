@@ -41,8 +41,14 @@ export class Excel4NodeLib {
             (!!Number(record[columnName]) ||
               Number(record[columnName]) === 0) &&
             columnName !== 'createdAt' &&
-            columnName !== 'description'
+            columnName !== 'description' &&
+            columnName !== 'birthDate' &&
+            columnName !== 'zipCode' &&
+            columnName !== 'complement' &&
+            columnName !== 'active' &&
+            columnName !== 'paidAt'
           ) {
+            console.log(columnName);
             this.ws
               .cell(rowIndex, detailsColumnIndex++)
               .number(parseFloat(record[columnName]));
