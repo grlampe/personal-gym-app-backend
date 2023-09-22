@@ -55,6 +55,6 @@ export class WorkoutReportService {
       );
     });
 
-    return await this.excel4node.writeFile('seee');
+    return await this.excel4node.writeToBuffer();
   }
 }
