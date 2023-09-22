@@ -48,7 +48,6 @@ export class Excel4NodeLib {
             columnName !== 'active' &&
             columnName !== 'paidAt'
           ) {
-            console.log(columnName);
             this.ws
               .cell(rowIndex, detailsColumnIndex++)
               .number(parseFloat(record[columnName]));
