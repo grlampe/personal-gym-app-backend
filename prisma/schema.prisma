@@ -131,13 +131,14 @@ model PreWorkoutOnExercise {
 }
 
 model Workout {
-  id                String              @id @default(uuid())
-  user              User                @relation(fields: [userId], references: [id])
-  userId            String
-  description       String
-  active            Boolean
-  WorkoutOnCategory WorkoutOnCategory[]
-  BodyMeasurement   BodyMeasurement[]
+  id                    String                  @id @default(uuid())
+  user                  User                    @relation(fields: [userId], references: [id])
+  userId                String
+  description           String
+  active                Boolean
+  WorkoutOnCategory     WorkoutOnCategory[]
+  BodyMeasurement       BodyMeasurement[]
+  ExerciseWeightHistory ExerciseWeightHistory[]
 
   @@map("tb_workout")
 }
@@ -174,6 +175,8 @@ model ExerciseWeightHistory {
   id         String   @id @default(uuid())
   exercise   Exercise @relation(fields: [exerciseId], references: [id])
   exerciseId String
+  workout    Workout  @relation(fields: [workoutId], references: [id])
+  workoutId  String
   user       User     @relation(fields: [userId], references: [id])
   userId     String
   weight     Int

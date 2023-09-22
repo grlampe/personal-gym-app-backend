@@ -10,7 +10,7 @@ import {
   Res,
 } from '@nestjs/common';
 import { Response } from 'express';
-import { SimpleUserReportDto } from './dtos/simpleUser';
+import { SimpleUserReportDto } from './dtos/simpleUser.dto';
 
 @Controller('simpleUser')
 export class SimpleUserReportController {
