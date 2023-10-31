@@ -18,9 +18,7 @@ export class Excel4NodeLib {
 
   public setUpWorkSheet(workSheetName?: string): void {
     this.wb = new xl.Workbook();
-    this.ws = this.wb.addWorksheet(
-      workSheetName ? workSheetName : 'Personal Gym App Reports',
-    );
+    this.ws = this.wb.addWorksheet(workSheetName ?? 'Personal Gym App Reports');
   }
 
   public buildHeader(
@@ -40,10 +38,10 @@ export class Excel4NodeLib {
     rowColumn: number,
     displayColumns: string[],
   ): void {
-    const rowIndex = rowColumn ? rowColumn : 1;
+    const rowIndex = rowColumn ?? 1;
 
     data.forEach((record) => {
-      let detailsColumnIndex = startColumn ? startColumn : 1;
+      let detailsColumnIndex = startColumn ?? 1;
 
       displayColumns.forEach((columnName) => {
         if (Object.keys(record).includes(columnName)) {
